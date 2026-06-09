@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <script>
-      window.location.href = "strana://nps?premise_id=733713cf-29ba-42b5-bda3-50a819847e46";
+      (function() {
+        var appScheme = "strana://nps?premise_id=733713cf-29ba-42b5-bda3-50a819847e46";
+        var playStoreUrl = "https://play.google.com/store/apps/details?id=com.strana.app"; 
+        var appStoreUrl = "https://apps.apple.com/ru/app/id123456789"; 
+
+        window.location.href = appScheme;
+
+        var fallbackUrl = playStoreUrl;
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            fallbackUrl = appStoreUrl;
+        }
+
+        setTimeout(function() {
+            if (!document.hidden) {
+                window.location.href = fallbackUrl;
+            }
+        }, 2500);
+      })();
     </script>
   </head>
+  <body>
+    <p>Переходим в приложение... Если ничего не произошло, <a href="https://play.google.com/store/apps/details?id=com.strana.app">нажмите здесь</a>.</p>
+  </body>
 </html>
