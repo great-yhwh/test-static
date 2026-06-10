@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Переход в приложение</title>
     <script>
       (function() {
         var premiseId = "733713cf-29ba-42b5-bda3-50a819847e46";
         var packageName = "com.mintrocket.strana_development";
+        var appStoreUrl = "https://apps.apple.com/ru/app/страна/id1534717460";
         
         var isAndroid = /Android/i.test(navigator.userAgent);
         var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -21,6 +21,16 @@
         } 
         else if (isIOS) {
             window.location.href = "strana://nps?premise_id=" + premiseId;
+
+            var delay = 2000;
+            var start = Date.now();
+            
+            setTimeout(function() {
+                var now = Date.now();
+                if (now - start < delay + 500) {
+                    window.location.href = appStoreUrl;
+                }
+            }, delay);
         } 
         else {
             window.location.href = "strana://nps?premise_id=" + premiseId;
@@ -28,5 +38,10 @@
       })();
     </script>
 </head>
+<body>
+    <p style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+        Переходим в приложение... <br>
+        Если ничего не произошло, <a href="https://apps.apple.com/ru/app/страна/id1534717460">нажмите здесь</a>.
+    </p>
 </body>
 </html>
